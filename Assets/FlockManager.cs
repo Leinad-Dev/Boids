@@ -5,7 +5,7 @@ using UnityEngine;
 public class FlockManager : MonoBehaviour
 {
     [SerializeField] GameObject agentPrefab;
-    [Range(10, 100)] public int numFish;
+    [Range(10, 500)] public int numFish;
     public GameObject[] allFish;
     [SerializeField] Vector3 spawnAreaLimit = new Vector3(5, 5, 5);
 
@@ -15,7 +15,7 @@ public class FlockManager : MonoBehaviour
     [Range(0.1f, 5.0f)]
     public float maxSpeed;
     [Range(1.0f, 200.0f)]
-    public float neighborDistanceRequirement;
+    public float visionRadius;
     [Range(1.0f, 5.0f)]
     public float rotationSpeed;
     [Range(1.0f, 20.0f)]

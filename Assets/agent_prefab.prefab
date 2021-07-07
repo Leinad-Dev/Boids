@@ -10,12 +10,14 @@ GameObject:
   m_Component:
   - component: {fileID: 7168402420840983824}
   - component: {fileID: 4647886636844534382}
+  - component: {fileID: 1853120758866537729}
+  - component: {fileID: 70290465264335970}
   m_Layer: 0
   m_Name: agent_prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &7168402420840983824
 Transform:
@@ -45,6 +47,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   managerRef: {fileID: 0}
+--- !u!135 &1853120758866537729
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7385250028443341055}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!136 &70290465264335970
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7385250028443341055}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &7328823748101874890
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -116,6 +145,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: fish_blue_surgeon
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8ce8c95e90a462d4a8d755b3c6f3e72e,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ce8c95e90a462d4a8d755b3c6f3e72e, type: 3}
