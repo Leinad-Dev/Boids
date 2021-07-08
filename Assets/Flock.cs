@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,6 +6,7 @@ public class Flock : MonoBehaviour
 {
     public FlockManager managerRef;
     float speed;
+    bool turning = false;
 
     private void Start()
     {
@@ -14,10 +14,33 @@ public class Flock : MonoBehaviour
     }
     private void Update()
     {
-        ApplyRules();
+        //bounding box of cube manager
+        Bounds b = new Bounds(managerRef.transform.position, managerRef.spawnAreaLimit*3f);
+        //if fish is out of bounds, turn it around
+        if (!b.Contains(transform.position))
+        {
+            turning = true;
+        }
+        else
+            turning = false;
+
+        if (turning == true) //FISH IS OUT OF BOUNDARY
+        {
+            Vector3 direction = managerRef.transform.position - this.transform.position; //newDirection = to - from 
+            if (direction != Vector3.zero) //rotate "this" smoothly to face the updated direction
+                transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction), managerRef.rotationSpeed * Time.deltaTime);
+        }
+        else
+        {
+            //FISH IS IN BOUNDARY
+            if (Random.Range(1, 100) <= 10)
+                ApplyRules();
+        }
+
+
+
         transform.Translate(0, 0, speed * Time.deltaTime);
     }
-
 
 
     private void ApplyRules()
@@ -32,43 +55,45 @@ public class Flock : MonoBehaviour
 
         foreach (GameObject g in fishHolder)
         {
-            if (g != this.gameObject) //no need to calculate distance between the same fish
+            if (g != this.gameObject) //no need to calculate distance between the same ("this") fish
             {
                 neighborDistance = Vector3.Distance(g.transform.position, this.transform.position);
-
-                
-
                 if (neighborDistance <= managerRef.visionRadius) // within range to be a neighbor.
                 {
+
+                    //COHESION (average group center)
                     vGrpCenter += g.transform.position;
                     grpSize++;
 
+
+                    //SEPERATION (average fish avoidance vector)
                     if (neighborDistance < managerRef.fishClipRange) //nbr fish too close to "this" fish
                     {
                         Vector3 vectorAway = this.transform.position - g.transform.position; //vector away from nbr fish (g)
                         vAvoidance = vAvoidance + vectorAway;
-                        Debug.DrawRay(transform.position, vectorAway, Color.blue);
+                        Debug.DrawRay(transform.position, vectorAway, Color.green);
                     }
+
+
+                    //ALIGNMENT (average group speed)
                     Flock anotherFlock = g.GetComponent<Flock>();
                     avgGrpSpeed = avgGrpSpeed + anotherFlock.speed;
+
                 }
             }
         }
 
         if (grpSize > 0) //check to see if we have a group
         {
-            vGrpCenter = vGrpCenter / grpSize;
+            vGrpCenter = vGrpCenter / grpSize + (managerRef.goalPos - this.transform.position);
             speed = avgGrpSpeed / grpSize;
+            Vector3 direction = (vGrpCenter + vAvoidance) - transform.position; //newDirection = desiredDirection - currentDirection  
 
-            //[vector towards the center] + [add the vector away from anyone we are might going to hit] - [our current position]
-            Vector3 direction = (vGrpCenter + vAvoidance) - transform.position;
-            if (direction != Vector3.zero)
-            {
-                transform.rotation = Quaternion.Slerp(transform.rotation,
-                Quaternion.LookRotation(direction), managerRef.rotationSpeed * Time.deltaTime);
-            }
+            if (direction != Vector3.zero) //rotate "this" smoothly to face the updated direction
+                transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction), managerRef.rotationSpeed * Time.deltaTime);
         }
     }
+
 
     private void OnDrawGizmos()
     {
@@ -77,6 +102,14 @@ public class Flock : MonoBehaviour
         Gizmos.color = Color.cyan;
         Gizmos.DrawWireSphere(transform.position, managerRef.fishClipRange);
     }
+
+
+
+
+
+
+
+
 
 
 
