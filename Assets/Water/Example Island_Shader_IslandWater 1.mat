@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Example Island_Shader_IslandWater 1
+  m_Shader: {fileID: 4800000, guid: 2a53a22ca42b9144781bda6b9a4bd19e, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs: []
+    m_Floats:
+    - Vector1_1AE1D4CB: 0.133
+    - Vector1_1E58CA3C: 0.3
+    - Vector1_24DAD7F: 0.1
+    - Vector1_39047021: 0.5
+    - Vector1_39222957: 0.76
+    - Vector1_3D495A1F: 0.9
+    - Vector1_489F9EEF: 3
+    - Vector1_4B305923: 5.65
+    - Vector1_4F92311A: 1
+    - Vector1_51075417: 0.63
+    - Vector1_5190E028: 0.37
+    - Vector1_5232C9B8: 1
+    - Vector1_5EB91206: 0.56
+    - Vector1_6DA97D7: 35
+    - Vector1_722CB011: 0
+    - Vector1_7FB5584F: 0.5
+    - Vector1_8BF7F1BF: 1
+    - Vector1_905986FC: 1
+    - Vector1_986CF1D2: 14
+    - Vector1_9E5F763C: 1
+    - Vector1_A38692A6: 0.6
+    - Vector1_AD7DFD35: 0
+    - Vector1_B42C4654: 0.97
+    - Vector1_B98A4C60: 0
+    - Vector1_BC8BA90A: 2.12
+    - Vector1_BD72615D: 2.6
+    - Vector1_BF07B4C4: 1.9
+    - Vector1_C6051FE9: 1.67
+    - Vector1_CC89A15C: 1
+    - Vector1_D42CC29E: 2
+    - Vector1_F0FA9185: 6
+    - Vector1_F2029A8E: 1
+    - Vector1_F4A73BA: 0.77
+    - Vector1_F976D8BD: 0.5
+    - Vector1_FABC47E4: 0.5
+    m_Colors:
+    - Color_3CACD0BA: {r: 0.2196079, g: 0.3529412, b: 0.509804, a: 1}
+    - Color_936A8730: {r: 0.1450979, g: 0.9490196, b: 1, a: 1}
+    - Color_D70B9788: {r: 0.145098, g: 0.9490197, b: 1, a: 1}
+    - Color_E63B4CEF: {r: 0.145098, g: 0.9490197, b: 1, a: 1}
+    - Vector2_B86025B3: {r: 0.5, g: 1, b: 0, a: 0}
+    - Vector2_D494475D: {r: 0.2, g: 0.2, b: 0, a: 0}
+  m_BuildTextureStacks: []
