@@ -15,7 +15,7 @@ public class Flock : MonoBehaviour
     private void Update()
     {
         //bounding box of cube manager
-        Bounds b = new Bounds(managerRef.transform.position, managerRef.spawnAreaLimit*3f);
+        Bounds b = new Bounds(managerRef.transform.position, managerRef.spawnAreaLimit*1f);
         //if fish is out of bounds, turn it around
         if (!b.Contains(transform.position))
         {

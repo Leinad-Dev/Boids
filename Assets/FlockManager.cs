@@ -39,13 +39,14 @@ public class FlockManager : MonoBehaviour
 
     private void Update()
     {
-/*        if(Random.Range(1, 100) <= 10)
+/*        if (Random.Range(1, 100) <= 10)
         {
             goalPos = this.transform.position;
         }*/
 
-        if (Random.Range(1, 100) <= 5)
+        if (Random.Range(1, 1000) <= 1)
         {
+            Debug.Log("found a new point to move to");
             goalPos = this.transform.position + new Vector3(Random.Range(-spawnAreaLimit.x, spawnAreaLimit.x),
                                                             Random.Range(-spawnAreaLimit.y, spawnAreaLimit.y),
                                                             Random.Range(-spawnAreaLimit.z, spawnAreaLimit.z));
